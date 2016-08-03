@@ -1,0 +1,18 @@
+.required::after {
+    content: "*";
+    position:absolute;
+    right:0px;
+    top:10px;
+    color: #FF0000;
+}
+
+
+/* zpmenu */
+.zpmenu{width:900px;display:inline;float:left;overflow:hidden;overflow: hidden;margin:8px 5px 0 10px;}
+.zpmenu dl{width:900px;float:left;_width:962px;margin-bottom: 0px;height: 34px;}
+.zpmenu dt{width:64px;float:left;}
+.zpmenu dd{position:relative;width:700px;display:block;float:left;overflow:hidden}
+div.zpmenu dl#slider2 dd div.zpinfor{padding:12px 20px 0 20px;overflow:hidden;}
+.zpmenu dd h1{width:403px;float:left;font-size:18px}
+.zpmenu dd span{display:inline-block;float:left;font-size:14px;margin-right:25px}
+/*.zpmenu dd h2{border-bottom:#b4b4b4 1px dashed;padding-bottom:5px;width:403px;display:inline;float:left;color:#9b0f0f;font-size:14px}*/

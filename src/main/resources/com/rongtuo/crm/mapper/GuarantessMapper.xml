@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rongtuo.crm.mapper.GuarantessMapper">
+    <select id="findAll" resultType="Guarantess">
+        select
+        *
+        from tb_guarantess
+        order by id
+    </select>
+    <insert id="insert" parameterType="com.rongtuo.crm.domain.Guarantess">
+        INSERT INTO tb_guarantess (id,client_no,client_name,quota,loan_no,loan_name,loan_ratify_no,loan_ratify_name,contacts,contacts_add,contacts_phone,contacts_email,legal,legal_add,legal_phone,legal_email,description)
+        VALUE (#{id},#{client_no},#{client_name},#{quota},#{loan_no},#{loan_name},#{loan_ratify_no},#{loan_ratify_name},#{contacts},#{contacts_add},#{contacts_phone},#{contacts_email},#{legal},#{legal_add},#{legal_phone},
+        #{legal_email},#{description})
+    </insert>
+
+    <select id="selName" resultType="Guarantess">
+        select
+        client_no,client_name
+        from tb_guarantess
+    </select>
+
+    <select id="find" resultType="Guarantess">
+        SELECT
+        *
+        FROM  tb_guarantess
+        WHERE
+        1 = 1
+        <if test='findtype = "1"'>
+            AND client_no = #{find}
+        </if>
+        <if test='findtype = "2"'>
+            AND client_name = #{find}
+        </if>
+        <if test='findtype = "3"'>
+            AND loan_no = #{find}
+        </if>
+        <if test='findtype = "4"'>
+            AND loan_name = #{find}
+        </if>
+        <if test='findtype = "5"'>
+            AND loan_ratify_no = #{find}
+        </if>
+        <if test='findtype = "6"'>
+            AND loan_ratify_name = #{find}
+        </if>
+        <if test='findtype = "7"'>
+            AND contacts = #{find}
+        </if>
+        <if test='findtype = "8"'>
+            AND contacts_phone = #{find}
+        </if>
+        <if test='findtype = "9"'>
+            AND legal = #{find}
+        </if>
+        <if test='findtype = "10"'>
+            AND legal_phone = #{find}
+        </if>
+    </select>
+    
+    <select id="selGuarantess" resultType="Guarantess">
+        SELECT * FROM tb_guarantess
+        WHERE 1 = 1
+        <if test="client_no != null and client_no != ''">
+            AND  client_no = #{client_no}
+        </if>
+        <if test="client_name != null and client_name != ''">
+            AND  client_name = #{client_name}
+        </if>
+        <if test="quota != null and quota != ''">
+            AND  quota = #{quota}
+        </if>
+        <if test="loan_no != null and loan_no != ''">
+            AND  loan_no = #{loan_no}
+        </if>
+        <if test="loan_name != null and loan_name != ''">
+            AND  loan_name = #{loan_name}
+        </if>
+        <if test="loan_ratify_no != null and loan_ratify_no != ''">
+            AND  loan_ratify_no = #{loan_ratify_no}
+        </if>
+        <if test="loan_ratify_name != null and loan_ratify_name != ''">
+            AND  loan_ratify_name = #{loan_ratify_name}
+        </if>
+        <if test="contacts != null and contacts != ''">
+            AND  contacts = #{contacts}
+        </if>
+        <if test="contacts_add != null and contacts_add != ''">
+            AND  contacts_add = #{contacts_add}
+        </if>
+        <if test="contacts_email != null and contacts_email != ''">
+            AND  contacts_email = #{contacts_email}
+        </if>
+        <if test="contacts_phone != null and contacts_phone != ''">
+            AND  contacts_phone = #{contacts_phone}
+        </if>
+        <if test="legal != null and legal != ''">
+        AND  legal = #{legal}
+        </if>
+        <if test="legal_add != null and legal_add != ''">
+            AND  legal_add = #{legal_add}
+        </if>
+        <if test="legal_phone != null and legal_phone != ''">
+            AND  legal_phone = #{legal_phone}
+        </if>
+        <if test="legal_email != null and legal_email != ''">
+            AND  legal_email = #{legal_email}
+        </if>
+        <if test="description != null and description != ''">
+            AND  description = #{description}
+        </if>
+    </select>
+    <select id="maxId" parameterType="Guarantess" resultType="Integer">
+        SELECT max(id) from tb_guarantess
+    </select>
+    <select id="selectById" parameterType="com.rongtuo.crm.domain.Guarantess" resultType="Guarantess">
+        SELECT * from tb_guarantess
+        WHERE 1=1
+        AND  id = #{_parameter}
+    </select>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rongtuo.crm.mapper.Key_ValueMapper">
+    <select id="findAll" resultType="Key_Value">
+        select
+        *
+        from tb_sys_key_value
+        order by id
+    </select>
+
+    <select id="selName" resultType="Key_Value">
+        select
+        *
+        from tb_sys_key_value
+        WHERE group_id IS NULL
+    </select>
+    <insert id="insert" parameterType="com.rongtuo.crm.domain.Key_Value">
+        INSERT INTO
+        tb_sys_key_value
+        (group_id,key_name,key_word,key_value,remark,key_order,state)
+        VALUE
+        (#{group_id},#{key_name},#{key_word},#{key_value},#{remark},#{key_order},#{state})
+    </insert>
+    <delete id="delete" parameterType="com.rongtuo.crm.domain.Key_Value">
+        DELETE  FROM tb_sys_key_value WHERE id=#{id}
+    </delete>
+    <select id="maxkeyOrder" parameterType="Key_Value" resultType="Integer">
+      SELECT MAX(key_order) from tb_sys_key_value WHERE group_id = #{group_id}
+    </select>
+
+    <select id="treeChild" resultType="Key_Value">
+        select
+        *
+        from tb_sys_key_value
+        WHERE group_id= #{id}
+    </select>
+    <select id="show" resultType="Key_Value">
+        select
+        *
+        from tb_sys_key_value
+        WHERE id= #{id}
+    </select>
+
+</mapper>

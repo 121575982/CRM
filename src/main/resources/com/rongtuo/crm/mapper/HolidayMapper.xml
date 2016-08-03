@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rongtuo.crm.mapper.HolidayMapper">
+    <select id="findAll" resultType="Holiday">
+        select
+        *
+        from tb_sys_holiday
+        order by id
+    </select>
+    <insert id="insert" parameterType="com.rongtuo.crm.domain.Holiday">
+        INSERT INTO
+        tb_sys_holiday
+        (holiday_date,holiday_name)
+        VALUE
+        (#{holiday_date},#{holiday_name})
+    </insert>
+    <update id="update" parameterType="com.rongtuo.crm.domain.Holiday">
+        update tb_sys_holiday
+        SET
+        project_name=#{project_name},project_purpose=#{project_purpose},plan_money=#{plan_money}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.rongtuo.crm.domain.Holiday">
+        DELETE  FROM tb_sys_holiday WHERE id=#{id}
+    </delete>
+
+    <select id="maxId" parameterType="Holiday" resultType="Integer">
+        SELECT max(id) from tb_sys_holiday
+    </select>
+</mapper>

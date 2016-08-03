@@ -1,0 +1,126 @@
+/* 对AdminLTE的定制 */
+a.sidebar-toggle {
+    text-decoration: none;
+}
+
+.main-header .logo {
+    text-decoration: none;
+}
+
+.main-sidebar {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.content-wrapper {
+    padding: 5px;
+}
+
+/* 对Bootstrap的定制 */
+@font-face {
+    font-family: 'Glyphicons Halflings';
+
+    src: url('./font/glyphicons-halflings-regular.eot');
+    src: url('./font/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('./font/glyphicons-halflings-regular.woff') format('woff'), url('./font/glyphicons-halflings-regular.ttf') format('truetype'), url('./font/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+/* 对font-awesome的定制 */
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('./font/fontawesome-webfont.eot?v=4.2.0');
+    src: url('./font/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('./font/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('./font/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('./font/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* customize for bootstrap-table */
+.modal-body .bootstrap-table {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* customize for modal-open */
+.modal-open .modal {
+    overflow-y: hidden;
+}
+
+/* 对validate错误提示的定制 */
+form .error{
+    color: #c00;
+}
+
+form label.error {
+    color: #c00;
+
+    font-size: 100%;
+    font-weight: bold;
+    font-variant:small-caps;
+
+    width:308px;
+    display: none;
+
+    padding:3px 0px 0px 5px;
+    border-top:1px dotted #ccc;
+
+    clear:both;
+}
+
+/**     */
+.link-btn{margin:0px 5px}
+/*.chat-box{height: auto !important;height:80px;min-height:80px;max-height:120px;width: inherit;overflow-x: hidden;overflow-y: auto;}*/
+.font-select{padding: 5px 10px}
+.emotion{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid;}
+.emotion table td{padding:0px;}
+.emotion table td img{cursor:pointer;border:1px #fff solid;}
+.emotion table td img:hover{border:1px #0066cc solid;}
+
+.chat-box{
+    resize: none;
+    width: 100%;
+    height: 110px;
+    border: hidden;
+}
+
+.chat-message-img{
+    width: 80px;
+    height: 80px;
+}
+
+.tip{
+    width:365px;
+    margin:10px auto 10px;
+    padding:8px 11px 8px;
+    font-size:14px;
+    line-height:25px;
+    color:#ffffff;
+    background-color: #a8b4cb;
+    border-radius:3px;
+}
+
+.highlight {
+    color: red;
+}
+
+.small-dialog .modal-dialog {
+    width: 50%;
+    top:85px;
+}
+
+.verify-dialog .modal-dialog{
+    width: 90%;
+}
+
+.direct-chat-text{
+    word-break: break-all;
+}
+.box-header .box-title {
+    font-size: 14px;
+}
+.notict-box {
+    -webkit-font-smoothing: antialiased
+}
+
+.sidebar-mini.sidebar-collapse .user-panel {
+    display: none !important;
+    -webkit-transform: translateZ(0);
+}

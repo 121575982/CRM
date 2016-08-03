@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rongtuo.crm.mapper.ProjectMapper">
+    <select id="findAll" resultType="Project_list">
+        select
+        *
+        from tb_project
+        order by id
+    </select>
+    <insert id="insert" parameterType="com.rongtuo.crm.domain.Project_list">
+        INSERT INTO
+        tb_project
+        (project_no,project_name,project_purpose,plan_money,min_money,max_money,trans_money,risk_reserve,
+        cycle,cycle_unit,start_raising_time,end_raising_time,payment_method,interest_rate,fee,project_describe,
+        guarantee_id,counter_guarantee_id,loan_employee_code,loan_employee_approva_code,insert_time,insert_code
+        ,preliminary_audit_time,preliminary_audi_code,final_audit_time,final_audit_code,id,project_type)
+        VALUE
+       (#{project_no},#{project_name},#{project_purpose},#{plan_money},#{min_money},#{max_money},#{trans_money},
+       #{risk_reserve},#{cycle},#{cycle_unit},#{start_raising_time},#{end_raising_time},#{payment_method},#{interest_rate},
+       #{fee},#{project_describe},#{guarantee_id},#{counter_guarantee_id},#{loan_employee_code},#{loan_employee_approva_code},
+       #{insert_time},#{insert_code},#{preliminary_audit_time},#{preliminary_audi_code},#{final_audit_time},#{final_audit_code},
+       #{id},#{project_type})
+    </insert>
+    <update id="update" parameterType="com.rongtuo.crm.domain.Project_list">
+        update tb_project
+        SET
+          project_name=#{project_name},project_purpose=#{project_purpose},plan_money=#{plan_money},min_money=#{min_money},
+          max_money=#{max_money},trans_money=#{trans_money},risk_reserve=#{risk_reserve},cycle=#{cycle},cycle_unit=#{cycle_unit},
+          start_raising_time=#{start_raising_time},end_raising_time=#{end_raising_time},payment_method=#{payment_method},interest_rate=#{interest_rate},
+          fee=#{fee},project_describe=#{project_describe},guarantee_id=#{guarantee_id},counter_guarantee_id=#{counter_guarantee_id},loan_employee_code=#{loan_employee_code},
+          loan_employee_approva_code=#{loan_employee_approva_code},insert_time=#{insert_time},insert_code=#{insert_code},preliminary_audit_time=#{preliminary_audit_time},
+          preliminary_audi_code=#{preliminary_audi_code},final_audit_time=#{final_audit_time},final_audit_code=#{final_audit_code},project_type=#{project_type}
+        WHERE project_no=#{project_no}
+    </update>
+
+    <update id="updateStstus" parameterType="com.rongtuo.crm.domain.Project_list">
+        UPDATE tb_project
+        SET
+        <if test="preliminary_audit_time != null and preliminary_audit_time != ''">
+            preliminary_audit_time = #{preliminary_audit_time},
+        </if>
+        <if test="preliminary_audi_code != null and preliminary_audi_code != ''">
+            preliminary_audi_code = #{preliminary_audi_code},
+        </if>
+        <if test="final_audit_time != null and final_audit_time != ''">
+            final_audit_time = #{final_audit_time},
+        </if>
+        <if test="final_audit_code != null and final_audit_code != ''">
+            final_audit_code = #{final_audit_code},
+        </if>
+        <if test="project_status != null and project_status != ''">
+            project_status = #{project_status}
+        </if>
+
+    </update>
+    <!--查询不同审核状态的项目-->
+    <select id="checkStatus" parameterType="com.rongtuo.crm.domain.Project_list" resultType="Project_list">
+        SELECT * FROM tb_project
+        WHERE 1 = 1
+        <if test="project_Status != null and project_Status != ''">
+          AND  project_Status = #{project_Status}
+        </if>
+    </select>
+    <select id="maxId" parameterType="Project_list" resultType="Integer">
+        SELECT max(id) from tb_project
+    </select>
+
+    <select id="selectById" parameterType="com.rongtuo.crm.domain.Project_list" resultType="Project_list">
+        SELECT * from tb_project
+        WHERE 1=1
+        AND  id = #{_parameter}
+    </select>
+
+    <update id="updateCheck" parameterType="com.rongtuo.crm.domain.Project_list">
+        UPDATE tb_project
+        SET
+        <if test="preliminary_audi_code != null and preliminary_audi_code != ''">
+            preliminary_audi_code = #{preliminary_audi_code},
+        </if>
+        <if test="preliminary_audit_time != null and preliminary_audit_time != ''">
+            preliminary_audit_time = #{preliminary_audit_time},
+        </if>
+        <if test="project_status != null">
+            project_status = #{project_status}
+        </if>
+        WHERE
+        id = #{id}
+    </update>
+
+    <select id="query" resultType="Project_list" parameterType="Project_list">
+        SELECT *
+        FROM tb_project
+        WHERE 1=1
+            AND project_status = #{project_status}
+    </select>
+
+</mapper>
